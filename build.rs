@@ -1,11 +1,6 @@
-use std::io::Result;
-
-#[cfg(target_os = "windows")]
-use winres::WindowsResource;
-
-fn main() -> Result<()> {
+fn main() {
     if cfg!(target_os = "windows") {
-        WindowsResource::new()
+        winres::WindowsResource::new()
             .set_manifest(
                 r#"
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
@@ -31,5 +26,4 @@ fn main() -> Result<()> {
             )
             .compile()?;
     }
-    Ok(())
 }
