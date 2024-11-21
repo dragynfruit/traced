@@ -1,4 +1,6 @@
-fn main() {
+use std::io::Result;
+
+fn main() -> Result<()> {
     if cfg!(target_os = "windows") {
         winres::WindowsResource::new()
             .set_manifest(
@@ -26,4 +28,5 @@ fn main() {
             )
             .compile()?;
     }
+    Ok(())
 }
